@@ -1,22 +1,19 @@
-# Install Homebrew
-
-curl -sS https://webi.sh/k9s | sh
-curl -s https://fluxcd.io/install.sh | bash
+# Install OpenTofu
 curl -fsSL https://get.opentofu.org/install-opentofu.sh | sh -s -- --install-method standalone 
-curl -sS https://webi.sh/ollama | sh
-curl -sS https://webi.sh/brew | sh
-brew install htop --ignore-dependencies
+
+# Instrall K9S to manage the cluster
+curl -sS https://webi.sh/k9s | sh
 
 # Initialize Tofu
 cd tf-bootstrap
 tofu init
 
-# Read GitHub token from user input
+# Read GitHub token from user input securely 
 read -s TF_VAR_github_token
 
 # Export GitHub organization, repository, and token as environment variables
 export TF_VAR_github_org="<GITHUB_ACCOUNT>"
-export TF_VAR_github_repository="fw-non-prod"
+export TF_VAR_github_repository="<GITHUB_REPO>"
 export TF_VAR_github_token="<GITHUB_TOKEN>"
 
 # Apply Tofu configuration
@@ -26,4 +23,8 @@ tofu apply
 alias kk="EDITOR='code --wait' k9s"
 alias k=kubectl
 source <(kubectl completion zsh)
+
+# Check your <GITHUB_REPO> repo
+# Check your local Kubernetes cluster
+kk
 
