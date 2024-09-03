@@ -1,0 +1,38 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: llm-ui # Replace <uiAppName> with the actual UI app name
+  namespace: default  # Replace <namespace> with the actual namespace
+  labels:
+    app: llm-ui # Replace <uiAppName> with the actual UI app name
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: llm-ui  # Replace <uiAppName> with the actual UI app name
+  template:
+    metadata:
+      labels:
+        app: llm-ui  # Replace <uiAppName> with the actual UI app name
+    spec:
+      securityContext:
+        runAsUser: 65532
+        runAsNonRoot: true
+      containers:
+        - name: chat-app
+          image: ghcr.io/weave-ai/chatinfo:v0.2.0 # Replace <ImageChatInfo> with the actual image info
+          env:
+            - name: LLM_API_HOST
+              value: my-model.default.svc.cluster.local:8000  # Replace placeholders with actual values
+          securityContext:
+            privileged: false
+            runAsNonRoot: true
+            runAsUser: 65532
+            capabilities:
+              drop:
+                - ALL
+          ports:
+            - containerPort: 8501
+              name: http
+              protocol: TCP

@@ -1,0 +1,33 @@
+apiVersion: ai.contrib.fluxcd.io/v1alpha1
+kind: LanguageModel
+metadata:
+  finalizers:
+  - finalizer.lm-controller.ai.contrib.fluxcd.io
+  generation: 1
+  labels:
+    ai.contrib.fluxcd.io/model: zephyr-7b-beta
+    ai.contrib.fluxcd.io/model-namespace: weave-ai
+  name: my-model
+  namespace: default
+spec:
+  engine:
+    deploymentType: Default
+    engineType: Default
+    imagePullPolicy: IfNotPresent
+    replicas: 1
+    resources:
+      requests:
+        cpu: "4"
+    serviceType: ClusterIP
+    storageClass: standard
+  interval: 2m0s
+  modelCacheStrategy: None
+  modelPullPolicy: IfNotPresent
+  prune: true
+  retryInterval: 30s
+  serviceAccountName: default
+  sourceRef:
+    kind: OCIRepository
+    name: zephyr-7b-beta
+    namespace: weave-ai
+  timeout: 2m0s

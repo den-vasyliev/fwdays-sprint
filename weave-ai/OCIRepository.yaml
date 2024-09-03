@@ -1,0 +1,20 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: OCIRepository
+metadata:
+  finalizers:
+  - finalizers.fluxcd.io
+  generation: 2
+  labels:
+    ai.contrib.fluxcd.io/artifact-kind: language-model
+  name: zephyr-7b-beta
+  namespace: weave-ai
+spec:
+  interval: 10m0s
+  layerSelector:
+    mediaType: application/vnd.cncf.flux.content.v1.tar+gzip
+    operation: copy
+  provider: generic
+  ref:
+    tag: v1.0.0-q5km-gguf
+  timeout: 1m0s
+  url: oci://ghcr.io/weave-ai/models/zephyr-7b-beta-8k
