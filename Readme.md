@@ -14,6 +14,18 @@ To use the scripts in this directory:
 
 This will create a kind cluster, a GitHub repository, and install FluxCD.
 
+Please apply a workaround for new docker ipv6 option that preventing to kind lauch
+https://github.com/dvordrova/kind-istio-tempo-otel/issues/1
+
+```
+# cat >/tmp/daemon.json 
+{
+  "ip6tables": false
+}
+# kill -SIGINT $(pgrep dockerd)
+# dockerd --config-file /tmp/daemon.json --dns 168.63.129.16 
+```
+
 ## weave-ai
 
 The `weave-ai` directory contains a collection of Flux controllers that manage the lifecycle of Large Language Models (LLMs) on Kubernetes.

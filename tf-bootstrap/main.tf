@@ -38,22 +38,6 @@ resource "github_repository" "this" {
   # Enable vulnerability alerts
   vulnerability_alerts = true
 }
-resource "github_branch_protection" "main" {
-  repository_id = github_repository.this.node_id
-  pattern       = "main"
-
-  required_status_checks {
-    strict   = true
-    contexts = ["validate"]
-  }
-
-  enforce_admins = true
-
-  required_pull_request_reviews {
-    dismiss_stale_reviews           = true
-    require_code_owner_reviews      = true
-  }
-}
 
 # ==========================================
 # Bootstrap Flux

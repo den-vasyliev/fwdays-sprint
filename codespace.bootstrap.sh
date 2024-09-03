@@ -1,6 +1,5 @@
 # Install Homebrew
 
-curl -sS https://webi.sh/kind | sh
 curl -sS https://webi.sh/k9s | sh
 curl -s https://fluxcd.io/install.sh | bash
 curl -fsSL https://get.opentofu.org/install-opentofu.sh | sh -s -- --install-method standalone 
@@ -24,14 +23,7 @@ export TF_VAR_github_token="<GITHUB_TOKEN>"
 tofu apply
 
 # Create alias for kubectl and command-line autocompletion
+alias kk="EDITOR='code --wait' k9s"
 alias k=kubectl
 source <(kubectl completion zsh)
 
-# Enable Flux command-line autocompletion for Zsh
-. <(flux completion zsh)
-
-# Watch for changes to Kustomizations
-flux get kustomizations --watch
-
-# Get all resources that are not ready
-flux get all -A --status-selector ready=false
