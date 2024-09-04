@@ -16,15 +16,15 @@ export TF_VAR_github_org="<GITHUB_ACCOUNT>"
 export TF_VAR_github_repository="<GITHUB_REPO>"
 export TF_VAR_github_token="<GITHUB_TOKEN>"
 
-# Apply Tofu configuration
+# Apply terrafrom configuration
 tofu apply
 
-# Create alias for kubectl and command-line autocompletion
+# Create alias for k9s, kubectl and command-line autocompletion
 alias kk="EDITOR='code --wait' k9s"
 alias k=kubectl
 source <(kubectl completion zsh)
 
-# Check your <GITHUB_REPO> repo
+# Check your <GITHUB_REPO> repo for flux setup
 # Check your local Kubernetes cluster
 kk
 
