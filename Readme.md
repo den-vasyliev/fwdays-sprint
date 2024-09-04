@@ -87,9 +87,9 @@ At this stage, you're ready to install Weave AI and its controller(s):
 - commit and push changes
 
 ```
-GITHUB_TOKEN=TF_VAR_github_token
-git clone https://github.com/$TF_VAR_github_org/TF_VAR_github_repository
-cd TF_VAR_github_repository
+GITHUB_TOKEN=$TF_VAR_github_token
+git clone https://github.com/$TF_VAR_github_org/$TF_VAR_github_repository
+cd $TF_VAR_github_repository
 cp -r ../weave-ai clusters/kind
 git add .
 git commit -am 'adding weave-ai'
