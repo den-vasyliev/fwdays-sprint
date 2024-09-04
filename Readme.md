@@ -119,8 +119,7 @@ To activate and run a model, add LanguageModel and UI manifests to kustomisation
 Commit and push your changes:
 
 ```
-- LanguageModel.yaml
-- Deployment-ui.yaml
+- ./models
 ```
 
 This command activates the model and sets up a UI for interaction.
