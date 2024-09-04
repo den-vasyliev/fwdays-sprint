@@ -55,7 +55,7 @@ Please apply a workaround for new docker ipv6 option that preventing to kind lau
 
 ```
 # kill -SIGINT $(pgrep dockerd)
-# dockerd --config-file --ip6tables=0
+# dockerd --ip6tables=0
 ```
 
 # Configure Weave-AI with GitOps
