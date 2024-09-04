@@ -5,10 +5,14 @@ The `tf-bootstrap` directory contains Terraform scripts that set up a Kubernetes
 
 
 ### Install OpenTofu
-```curl -fsSL https://get.opentofu.org/install-opentofu.sh | sh -s -- --install-method standalone ```
+```
+curl -fsSL https://get.opentofu.org/install-opentofu.sh | sh -s -- --install-method standalone
+```
 
 ### Instrall K9S to manage the cluster
-```curl -sS https://webi.sh/k9s | sh```
+```
+curl -sS https://webi.sh/k9s | sh
+```
 
 ### Initialize Tofu
 1. Navigate to the `tf-bootstrap` directory.
