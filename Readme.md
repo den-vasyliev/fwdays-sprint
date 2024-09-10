@@ -34,6 +34,19 @@ export TF_VAR_github_repository="<GITHUB_REPO>"
 export TF_VAR_github_token
 ```
 
+### Disable IPv6 in dockerd
+
+```shell
+sudo tee /etc/docker/daemon.json >/dev/null <<-EOF
+{
+  "ip6tables": false,
+  "ipv6": false
+}
+EOF
+sudo pkill dockerd && sudo pkill containerd
+bash /usr/local/share/docker-init.sh
+```
+
 ### Apply terrafrom configuration
 This will create a kind cluster, a GitHub repository, and install FluxCD.
 
@@ -52,15 +65,6 @@ source <(kubectl completion zsh)
 
 ### Check your local Kubernetes cluster
 ```kk```
-
-### Codespaces and dockerd workaround
-
-Please apply a workaround for new docker ipv6 option that preventing to kind lauch in Codespaces
-
-```
-# kill -SIGINT $(pgrep dockerd)
-# dockerd --ip6tables=0
-```
 
 # Configure Weave-AI with GitOps
 
