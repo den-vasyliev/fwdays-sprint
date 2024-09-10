@@ -22,7 +22,8 @@ terraform {
 # ==========================================
 
 resource "kind_cluster" "this" {
-  name = "flux"
+  name           = "flux"
+  wait_for_ready = true
 }
 
 # ==========================================
