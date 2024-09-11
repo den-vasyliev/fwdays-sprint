@@ -22,7 +22,18 @@ terraform {
 # ==========================================
 
 resource "kind_cluster" "this" {
-  name = "flux"
+  name           = "flux"
+  wait_for_ready = true
+
+  kubeconfig_path = abspath("${path.root}/.terraform/kubeconfig")
+
+  kind_config {
+    kind        = "Cluster"
+    api_version = "kind.x-k8s.io/v1alpha4"
+    networking {
+      ip_family = "ipv4"
+    }
+  }
 }
 
 # ==========================================
