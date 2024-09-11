@@ -8,3 +8,4 @@ resources:
 - RoleBinding.yaml
 - Roles.yaml
 - Service.yaml
+- NetworkPolicy.yaml
