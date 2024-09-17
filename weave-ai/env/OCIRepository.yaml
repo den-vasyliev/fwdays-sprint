@@ -15,6 +15,6 @@ spec:
     operation: copy
   provider: generic
   ref:
-    tag: v1.0.0-q5km-gguf
+    tag: sha256:920739d63e8988cad6680796a761e45367618c7fb92520efd9020b2a668f3480
   timeout: 1m0s
   url: oci://ghcr.io/weave-ai/models/zephyr-7b-beta-8k
