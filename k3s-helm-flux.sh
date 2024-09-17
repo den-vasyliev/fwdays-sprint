@@ -1,4 +1,4 @@
-
+## K3S Bootstrap 
 curl -sfL https://get.k3s.io | INSTALL_K3S_SKIP_START=true INSTALL_K3S_SKIP_ENABLE=true sh -
 sudo k3s server --snapshotter native&
 export KUBECONFIG=/etc/rancher/k3s/k3s.yaml 
@@ -10,6 +10,7 @@ compdef kubecolor=kubectl
 curl -sS https://webi.sh/k9s | sh
 alias kk="EDITOR='code --wait' ~/.local/opt/k9s-v0.32.5/bin/k9s"
 
+## Cluster Overview
 k version
 k get all -A
 k get componentstatuses 
@@ -18,22 +19,24 @@ k top no
 k api-resources
 k cluster-info
 
+## Kubectl REST calls
 k get po -v 7
 k get po -v 9
 
-RBAC
+## RBAC
 k config view
 k auth whoami
 k auth can-i list pods -n demo
 k proxy
 k explain csr
 
+## Decode client-certificate
 echo <client-certificate-data> |base64 -d|openssl x509 -text    
 
-How to add user
-https://medium.com/@muppedaanvesh/a-hand-on-guide-to-kubernetes-rbac-with-a-user-creation-%EF%B8%8F-1ad9aa3cafb1
+## How to add user
+## https://medium.com/@muppedaanvesh/a-hand-on-guide-to-kubernetes-rbac-with-a-user-creation-%EF%B8%8F-1ad9aa3cafb1
 
-NETWORKING 
+## NETWORKING 
 cat /proc/sys/net/netfilter/nf_conntrack_max
 cat /proc/sys/net/netfilter/nf_conntrack_count
 
@@ -43,10 +46,10 @@ path_to/conntrack -E
 path_to/conntrack –L –d 10.32.0.1
 sudo iptables-save
 
-https://adil.medium.com/how-to-fix-conntrack-table-full-dropping-packets-in-kubernetes-07f561a432aa
+## https://adil.medium.com/how-to-fix-conntrack-table-full-dropping-packets-in-kubernetes-07f561a432aa
 
-HELM
-go-demo-app intro - https://github.com/den-vasyliev/go-demo-app
+## HELM
+## go-demo-app intro - https://github.com/den-vasyliev/go-demo-app
 
 helm template demo ./helm --output-dir test --release-name --create-namespace
 helm install demo ./helm -n demo --create-namespace
@@ -54,7 +57,7 @@ curl -H "Content-Type: application/json" -d '{"text": "dddabcde"}' localhost:808
 wget -O /tmp/g.png https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png
 curl -F 'image=@/tmp/g.png' localhost:8080
 
-GITOPS
+## GITOPS
 curl -s https://fluxcd.io/install.sh | bash
 . <(flux completion zsh)
 
