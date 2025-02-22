@@ -4,15 +4,11 @@ provider "flux" {
     client_certificate     = kind_cluster.this.client_certificate
     client_key             = kind_cluster.this.client_key
     cluster_ca_certificate = kind_cluster.this.cluster_ca_certificate
-    config_paths           = [
-      kind_cluster.this.kubeconfig_path,
-      pathexpand("~/.kube/config")
-    ]
   }
   git = {
     url = "https://github.com/${var.github_org}/${var.github_repository}.git"
     http = {
-      username = "git"
+      username = "git" # This can be any string when using a personal access token
       password = var.github_token
     }
   }
