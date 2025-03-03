@@ -54,6 +54,15 @@ This will create a kind cluster, a GitHub repository, and install FluxCD.
 tofu apply
 ```
 
+### Use configuration of newly deployed Kubernetes cluster
+
+```shell
+export KUBECONFIG=$(pwd)/.terraform/kubeconfig
+```
+
+> **_NOTE:_** You have to run this command in each new shell session.
+
+
 ### Create alias for k9s, kubectl and command-line autocompletion
 ```
 alias kk="EDITOR='code --wait' k9s"
